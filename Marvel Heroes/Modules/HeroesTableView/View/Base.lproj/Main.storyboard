@@ -44,10 +44,10 @@
             </objects>
             <point key="canvasLocation" x="963.76811594202911" y="91.741071428571431"/>
         </scene>
-        <!--Heroes Navigation Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="sEW-ff-MsN">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uu8-ZU-jgg" customClass="HeroesNavigationController" customModule="Marvel_Heroes" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uu8-ZU-jgg" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bme-FN-yVb">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

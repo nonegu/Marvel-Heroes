@@ -15,6 +15,24 @@
 		BA1E3EC0251E43020003A0BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA1E3EBE251E43020003A0BA /* LaunchScreen.storyboard */; };
 		BA1E3ECB251E43030003A0BA /* Marvel_HeroesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1E3ECA251E43030003A0BA /* Marvel_HeroesTests.swift */; };
 		BA1E3ED6251E43030003A0BA /* Marvel_HeroesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1E3ED5251E43030003A0BA /* Marvel_HeroesUITests.swift */; };
+		BA725DBA251E74AF0015604F /* HeroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA725DB8251E74AF0015604F /* HeroCell.swift */; };
+		BA725DBB251E74AF0015604F /* HeroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA725DB8251E74AF0015604F /* HeroCell.swift */; };
+		BA725DBC251E74AF0015604F /* HeroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA725DB8251E74AF0015604F /* HeroCell.swift */; };
+		BA725DBD251E74AF0015604F /* HeroCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA725DB9251E74AF0015604F /* HeroCell.xib */; };
+		BA725DBE251E74AF0015604F /* HeroCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA725DB9251E74AF0015604F /* HeroCell.xib */; };
+		BA725DBF251E74AF0015604F /* HeroCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA725DB9251E74AF0015604F /* HeroCell.xib */; };
+		BA725DCA251E78770015604F /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA725DC9251E78770015604F /* UIFont+Extensions.swift */; };
+		BA725DCB251E78770015604F /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA725DC9251E78770015604F /* UIFont+Extensions.swift */; };
+		BA725DCC251E78770015604F /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA725DC9251E78770015604F /* UIFont+Extensions.swift */; };
+		BA725DD2251E78990015604F /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA725DD1251E78990015604F /* AppFonts.swift */; };
+		BA725DD3251E78990015604F /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA725DD1251E78990015604F /* AppFonts.swift */; };
+		BA725DD4251E78990015604F /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA725DD1251E78990015604F /* AppFonts.swift */; };
+		BA725DDC251E7B4A0015604F /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA725DDB251E7B4A0015604F /* UIView+Extensions.swift */; };
+		BA725DDD251E7B4A0015604F /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA725DDB251E7B4A0015604F /* UIView+Extensions.swift */; };
+		BA725DDE251E7B4A0015604F /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA725DDB251E7B4A0015604F /* UIView+Extensions.swift */; };
+		BA725DE3251E7B860015604F /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA725DE2251E7B860015604F /* UICollectionView+Extensions.swift */; };
+		BA725DE4251E7B860015604F /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA725DE2251E7B860015604F /* UICollectionView+Extensions.swift */; };
+		BA725DE5251E7B860015604F /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA725DE2251E7B860015604F /* UICollectionView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +67,12 @@
 		BA1E3ED1251E43030003A0BA /* Marvel HeroesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Marvel HeroesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA1E3ED5251E43030003A0BA /* Marvel_HeroesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marvel_HeroesUITests.swift; sourceTree = "<group>"; };
 		BA1E3ED7251E43030003A0BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA725DB8251E74AF0015604F /* HeroCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroCell.swift; sourceTree = "<group>"; };
+		BA725DB9251E74AF0015604F /* HeroCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeroCell.xib; sourceTree = "<group>"; };
+		BA725DC9251E78770015604F /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
+		BA725DD1251E78990015604F /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
+		BA725DDB251E7B4A0015604F /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		BA725DE2251E7B860015604F /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +181,8 @@
 			isa = PBXGroup;
 			children = (
 				BA1E3EB9251E43010003A0BA /* Main.storyboard */,
+				BA725DB8251E74AF0015604F /* HeroCell.swift */,
+				BA725DB9251E74AF0015604F /* HeroCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -172,6 +198,7 @@
 		BA725D8B251E6DB10015604F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				BA725DD0251E788A0015604F /* Helpers */,
 				BA725D8C251E6DBA0015604F /* Extensions */,
 			);
 			path = Utilities;
@@ -180,8 +207,19 @@
 		BA725D8C251E6DBA0015604F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				BA725DC9251E78770015604F /* UIFont+Extensions.swift */,
+				BA725DDB251E7B4A0015604F /* UIView+Extensions.swift */,
+				BA725DE2251E7B860015604F /* UICollectionView+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BA725DD0251E788A0015604F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				BA725DD1251E78990015604F /* AppFonts.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		BA90B520251E66CA00D7FFA1 /* Modules */ = {
@@ -297,6 +335,7 @@
 			files = (
 				BA1E3EC0251E43020003A0BA /* LaunchScreen.storyboard in Resources */,
 				BA1E3EBD251E43020003A0BA /* Assets.xcassets in Resources */,
+				BA725DBD251E74AF0015604F /* HeroCell.xib in Resources */,
 				BA1E3EBB251E43010003A0BA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,6 +344,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA725DBE251E74AF0015604F /* HeroCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +352,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA725DBF251E74AF0015604F /* HeroCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,8 +363,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA725DDC251E7B4A0015604F /* UIView+Extensions.swift in Sources */,
+				BA725DD2251E78990015604F /* AppFonts.swift in Sources */,
 				BA1E3EB8251E43010003A0BA /* HeroesTableViewController.swift in Sources */,
 				BA1E3EB4251E43010003A0BA /* AppDelegate.swift in Sources */,
+				BA725DE3251E7B860015604F /* UICollectionView+Extensions.swift in Sources */,
+				BA725DBA251E74AF0015604F /* HeroCell.swift in Sources */,
+				BA725DCA251E78770015604F /* UIFont+Extensions.swift in Sources */,
 				BA1E3EB6251E43010003A0BA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,6 +378,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA725DD3251E78990015604F /* AppFonts.swift in Sources */,
+				BA725DBB251E74AF0015604F /* HeroCell.swift in Sources */,
+				BA725DE4251E7B860015604F /* UICollectionView+Extensions.swift in Sources */,
+				BA725DDD251E7B4A0015604F /* UIView+Extensions.swift in Sources */,
+				BA725DCB251E78770015604F /* UIFont+Extensions.swift in Sources */,
 				BA1E3ECB251E43030003A0BA /* Marvel_HeroesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,6 +391,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA725DD4251E78990015604F /* AppFonts.swift in Sources */,
+				BA725DBC251E74AF0015604F /* HeroCell.swift in Sources */,
+				BA725DE5251E7B860015604F /* UICollectionView+Extensions.swift in Sources */,
+				BA725DDE251E7B4A0015604F /* UIView+Extensions.swift in Sources */,
+				BA725DCC251E78770015604F /* UIFont+Extensions.swift in Sources */,
 				BA1E3ED6251E43030003A0BA /* Marvel_HeroesUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
