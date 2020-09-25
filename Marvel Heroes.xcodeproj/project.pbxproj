@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		BA1E3EB4251E43010003A0BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1E3EB3251E43010003A0BA /* AppDelegate.swift */; };
 		BA1E3EB6251E43010003A0BA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1E3EB5251E43010003A0BA /* SceneDelegate.swift */; };
-		BA1E3EB8251E43010003A0BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1E3EB7251E43010003A0BA /* ViewController.swift */; };
+		BA1E3EB8251E43010003A0BA /* HeroesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1E3EB7251E43010003A0BA /* HeroesTableViewController.swift */; };
 		BA1E3EBB251E43010003A0BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA1E3EB9251E43010003A0BA /* Main.storyboard */; };
 		BA1E3EBD251E43020003A0BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA1E3EBC251E43020003A0BA /* Assets.xcassets */; };
 		BA1E3EC0251E43020003A0BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA1E3EBE251E43020003A0BA /* LaunchScreen.storyboard */; };
@@ -38,7 +38,7 @@
 		BA1E3EB0251E43010003A0BA /* Marvel Heroes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Marvel Heroes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA1E3EB3251E43010003A0BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA1E3EB5251E43010003A0BA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BA1E3EB7251E43010003A0BA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BA1E3EB7251E43010003A0BA /* HeroesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesTableViewController.swift; sourceTree = "<group>"; };
 		BA1E3EBA251E43010003A0BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BA1E3EBC251E43020003A0BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA1E3EBF251E43020003A0BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -99,13 +99,10 @@
 		BA1E3EB2251E43010003A0BA /* Marvel Heroes */ = {
 			isa = PBXGroup;
 			children = (
-				BA1E3EB3251E43010003A0BA /* AppDelegate.swift */,
-				BA1E3EB5251E43010003A0BA /* SceneDelegate.swift */,
-				BA1E3EB7251E43010003A0BA /* ViewController.swift */,
-				BA1E3EB9251E43010003A0BA /* Main.storyboard */,
-				BA1E3EBC251E43020003A0BA /* Assets.xcassets */,
-				BA1E3EBE251E43020003A0BA /* LaunchScreen.storyboard */,
-				BA1E3EC1251E43020003A0BA /* Info.plist */,
+				BA725D86251E6CBC0015604F /* AppDelegate */,
+				BA90B520251E66CA00D7FFA1 /* Modules */,
+				BA725D8B251E6DB10015604F /* Utilities */,
+				BA725D87251E6CF50015604F /* Resources */,
 			);
 			path = "Marvel Heroes";
 			sourceTree = "<group>";
@@ -126,6 +123,73 @@
 				BA1E3ED7251E43030003A0BA /* Info.plist */,
 			);
 			path = "Marvel HeroesUITests";
+			sourceTree = "<group>";
+		};
+		BA725D86251E6CBC0015604F /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				BA1E3EB3251E43010003A0BA /* AppDelegate.swift */,
+				BA1E3EB5251E43010003A0BA /* SceneDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		BA725D87251E6CF50015604F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BA1E3EBC251E43020003A0BA /* Assets.xcassets */,
+				BA1E3EC1251E43020003A0BA /* Info.plist */,
+				BA1E3EBE251E43020003A0BA /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BA725D88251E6D300015604F /* HeroesTableView */ = {
+			isa = PBXGroup;
+			children = (
+				BA725D89251E6D570015604F /* View */,
+				BA725D8A251E6D5C0015604F /* Controller */,
+			);
+			path = HeroesTableView;
+			sourceTree = "<group>";
+		};
+		BA725D89251E6D570015604F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BA1E3EB9251E43010003A0BA /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BA725D8A251E6D5C0015604F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BA1E3EB7251E43010003A0BA /* HeroesTableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		BA725D8B251E6DB10015604F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				BA725D8C251E6DBA0015604F /* Extensions */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		BA725D8C251E6DBA0015604F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BA90B520251E66CA00D7FFA1 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				BA725D88251E6D300015604F /* HeroesTableView */,
+			);
+			path = Modules;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +322,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA1E3EB8251E43010003A0BA /* ViewController.swift in Sources */,
+				BA1E3EB8251E43010003A0BA /* HeroesTableViewController.swift in Sources */,
 				BA1E3EB4251E43010003A0BA /* AppDelegate.swift in Sources */,
 				BA1E3EB6251E43010003A0BA /* SceneDelegate.swift in Sources */,
 			);
@@ -436,14 +500,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "Marvel Heroes/Info.plist";
+				DEVELOPMENT_TEAM = 89UUHMRUT9;
+				INFOPLIST_FILE = "Marvel Heroes/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.enderguzel.Marvel-Heroes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -454,14 +521,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "Marvel Heroes/Info.plist";
+				DEVELOPMENT_TEAM = 89UUHMRUT9;
+				INFOPLIST_FILE = "Marvel Heroes/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.enderguzel.Marvel-Heroes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
