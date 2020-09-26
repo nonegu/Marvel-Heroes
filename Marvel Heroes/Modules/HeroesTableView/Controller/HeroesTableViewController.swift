@@ -28,6 +28,7 @@ class HeroesTableViewController: UIViewController {
     }
     
     // MARK: - IBOutlets
+    @IBOutlet weak var noDataLabel: UILabel!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     // MARK: - Lifecycle Methods
@@ -36,6 +37,7 @@ class HeroesTableViewController: UIViewController {
         
         configureNavBarWithImage()
         configureSegmentedControl()
+        configureNoDataLabel()
         configureCollectionView()
         
         getCharacters(page: paginationControlData.currentPage)
@@ -45,6 +47,8 @@ class HeroesTableViewController: UIViewController {
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         viewState = ViewState.init(rawValue: segmentedControl.selectedSegmentIndex) ?? .all
         collectionView.reloadData()
+        
+        noDataLabel.isHidden = !(viewState == .favorites && favoriteCharacters.isEmpty)
     }
 }
 
@@ -93,7 +97,8 @@ extension HeroesTableViewController: HeroDetailViewControllerDelegate {
     func heroDetail(_ vc: HeroDetailViewController, didRemoveFavorite char: Character) {
         switch viewState {
         case .favorites:
-            self.collectionView.reloadData()
+            collectionView.reloadData()
+            noDataLabel.isHidden = !(viewState == .favorites && favoriteCharacters.isEmpty)
         case .all:
             break
         }
@@ -201,10 +206,18 @@ extension HeroesTableViewController {
         segmentedControl.tintColor = .white
     }
     
+    private func configureNoDataLabel() {
+        noDataLabel.font = .helveticaNeueBoldWith(size: 20)
+        noDataLabel.textAlignment = .center
+        noDataLabel.text = "No Hero Found"
+        noDataLabel.isHidden = true
+    }
+    
     private func configureCollectionView() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(collectionView)
+        view.sendSubviewToBack(collectionView)
         
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor),

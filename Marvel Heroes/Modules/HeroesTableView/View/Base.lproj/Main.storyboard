@@ -29,17 +29,28 @@
                                     <action selector="segmentChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="wvI-UI-kCJ"/>
                                 </connections>
                             </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RvU-ku-ioW">
+                                <rect key="frame" x="12" y="134" width="390" height="720"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="yXc-wq-Dhx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Crg-sx-84V"/>
+                            <constraint firstItem="RvU-ku-ioW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="12" id="HUz-Gn-7Gq"/>
                             <constraint firstItem="yXc-wq-Dhx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="SPS-d3-Duk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RvU-ku-ioW" secondAttribute="trailing" constant="12" id="fuH-oF-PEV"/>
                             <constraint firstItem="yXc-wq-Dhx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="gwh-eb-04Y"/>
+                            <constraint firstItem="RvU-ku-ioW" firstAttribute="top" secondItem="yXc-wq-Dhx" secondAttribute="bottom" constant="8" id="vtl-oP-jCM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="RvU-ku-ioW" secondAttribute="bottom" constant="8" id="zWC-f5-mZq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Hs8-h9-c6M"/>
                     <connections>
+                        <outlet property="noDataLabel" destination="RvU-ku-ioW" id="RDX-EW-64A"/>
                         <outlet property="segmentedControl" destination="yXc-wq-Dhx" id="B12-wH-bnc"/>
                     </connections>
                 </viewController>
