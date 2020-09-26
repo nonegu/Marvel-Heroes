@@ -25,6 +25,7 @@ class HeroDetailViewController: UIViewController {
     
     // MARK: - Properties
     private var headerImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 300))
+    private var favoriteButton = UIButton(type: .custom)
     private var minHeaderImageHeight: CGFloat = 60
     private var character: Character!
     private var comics: [Comic] = []
@@ -38,6 +39,7 @@ class HeroDetailViewController: UIViewController {
         configureScrollView()
         configureCollectionView()
         configureLabels()
+        configureFavoriteButton()
         
         getComics(dateSince: createSince2005Date())
     }
@@ -111,6 +113,27 @@ extension HeroDetailViewController {
         headerImageView.kf.setImage(with: thumbnailImageURL)
     }
     
+    private func configureFavoriteButton() {
+        favoriteButton.tintColor = .systemPink
+        favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .selected)
+        favoriteButton.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
+        favoriteButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(favoriteButton)
+        
+        NSLayoutConstraint.activate([
+            favoriteButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
+            favoriteButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
+            favoriteButton.widthAnchor.constraint(equalToConstant: 44)
+        ])
+        
+        
+        if let _ = RealmService.getObjects(ofType: RealmCharacter.self).filter("id == \(character.id ?? 0)").first {
+            favoriteButton.isSelected = true
+        }
+    }
+    
     private func configureScrollView() {
         scrollView.delegate = self
         scrollView.contentInset = UIEdgeInsets(
@@ -170,5 +193,37 @@ extension HeroDetailViewController {
         
         let userCalendar = Calendar.current
         return userCalendar.date(from: dateComponents) ?? Date()
+    }
+    
+    @objc private func favoriteButtonTapped() {
+        if !favoriteButton.isSelected {
+            addHeroToFavorites()
+        } else {
+            removeHeroFromFavorites()
+        }
+    }
+    
+    private func removeHeroFromFavorites() {
+        guard let object = RealmService.getObjects(ofType: RealmCharacter.self).filter("id == \(character.id ?? 0)").first else { return }
+        RealmService.delete(object: object) { [weak self] (result) in
+            switch result {
+            case .success(_):
+                self?.favoriteButton.isSelected.toggle()
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    private func addHeroToFavorites() {
+        let hero = RealmCharacter(from: character)
+        RealmService.save(objects: hero) { [weak self] (result) in
+            switch result {
+            case .success(_):
+                self?.favoriteButton.isSelected.toggle()
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }

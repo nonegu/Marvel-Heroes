@@ -7,6 +7,11 @@
 
 import UIKit
 
+private enum ViewState: Int {
+    case all
+    case favorites
+}
+
 class HeroesTableViewController: UIViewController {
     
     // MARK: - Properties
@@ -15,6 +20,12 @@ class HeroesTableViewController: UIViewController {
     private var isLoading = false
     private var loadingView: LoadingReusableView?
     private var paginationControlData = PaginationControlData(pageSize: 30)
+    private var viewState: ViewState = .all
+    
+    private var favoriteCharacters: [Character] {
+        let objects = RealmService.getObjects(ofType: RealmCharacter.self)
+        return objects.map { Character(realmCharacter: $0) }
+    }
     
     // MARK: - IBOutlets
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -29,17 +40,34 @@ class HeroesTableViewController: UIViewController {
         
         getCharacters(page: paginationControlData.currentPage)
     }
+    
+    // MARK: - IBActions
+    @IBAction func segmentChanged(_ sender: UISegmentedControl) {
+        viewState = ViewState.init(rawValue: segmentedControl.selectedSegmentIndex) ?? .all
+        collectionView.reloadData()
+    }
 }
 
 // MARK: - UICollectionViewDelegate
 extension HeroesTableViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return characters.count
+        switch viewState {
+        case .all:
+            return characters.count
+        case .favorites:
+            return favoriteCharacters.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: HeroCell = collectionView.dequeueReusableCell(indexPath: indexPath)
-        cell.configure(for: characters[indexPath.row])
+        cell.heroImageView.image = nil
+        switch viewState {
+        case .all:
+            cell.configure(for: characters[indexPath.row])
+        case .favorites:
+            cell.configure(for: favoriteCharacters[indexPath.row])
+        }
         return cell
     }
 }
@@ -47,7 +75,15 @@ extension HeroesTableViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension HeroesTableViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let heroDetail = HeroDetailViewController.create(character: characters[indexPath.row])
+        let character: Character
+        switch viewState {
+        case .all:
+            character = characters[indexPath.row]
+        case .favorites:
+            character = favoriteCharacters[indexPath.row]
+        }
+        
+        let heroDetail = HeroDetailViewController.create(character: character)
         present(heroDetail, animated: true, completion: nil)
     }
 }
@@ -107,7 +143,9 @@ extension HeroesTableViewController {
     
     func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
         if elementKind == UICollectionView.elementKindSectionFooter {
-            self.loadingView?.activityIndicator.startAnimating()
+            if viewState != .favorites {
+                self.loadingView?.activityIndicator.startAnimating()
+            }
         }
     }
     

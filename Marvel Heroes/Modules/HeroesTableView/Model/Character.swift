@@ -12,6 +12,16 @@ struct Character: Decodable {
     let name: String?
     let description: String?
     let thumbnail: Thumbnail?
+    
+    init(realmCharacter: RealmCharacter) {
+        self.id = realmCharacter.id
+        self.name = realmCharacter.name
+        self.description = realmCharacter.heroDescription
+        self.thumbnail = Thumbnail(
+            path: realmCharacter.imagePath,
+            imageExtension: realmCharacter.imageExtension
+        )
+    }
 }
 
 struct Thumbnail: Decodable {
@@ -29,6 +39,15 @@ struct Thumbnail: Decodable {
         
         imageExtension = try container.decodeIfPresent(String.self, forKey: .imageExtension)
         path = try container.decodeIfPresent(String.self, forKey: .path)
+        
+        if let path = path {
+            imageURL = URL(string: path)
+        }
+    }
+    
+    init(path: String?, imageExtension: String?) {
+        self.path = path
+        self.imageExtension = imageExtension
         
         if let path = path {
             imageURL = URL(string: path)
