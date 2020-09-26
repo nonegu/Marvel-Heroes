@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -59,6 +59,7 @@
 		BAA03837251F2FD000D154C8 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA03836251F2FD000D154C8 /* Character.swift */; };
 		BAA03838251F2FD000D154C8 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA03836251F2FD000D154C8 /* Character.swift */; };
 		BAA03839251F2FD000D154C8 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA03836251F2FD000D154C8 /* Character.swift */; };
+		BAA0384E251F517D00D154C8 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA0384D251F517C00D154C8 /* URL+Extensions.swift */; };
 		C67158A215DAD08E02453456 /* Pods_Marvel_Heroes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C1819882A905C7ECF1F46D9 /* Pods_Marvel_Heroes.framework */; };
 /* End PBXBuildFile section */
 
@@ -116,6 +117,7 @@
 		BAA03827251F2EF500D154C8 /* MarvelDataWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelDataWrapper.swift; sourceTree = "<group>"; };
 		BAA0382E251F2F5000D154C8 /* MarvelDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelDataContainer.swift; sourceTree = "<group>"; };
 		BAA03836251F2FD000D154C8 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		BAA0384D251F517C00D154C8 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		FEAC75FF2CA3A09E1BF3C3D8 /* Pods-Marvel Heroes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marvel Heroes.debug.xcconfig"; path = "Target Support Files/Pods-Marvel Heroes/Pods-Marvel Heroes.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -273,6 +275,7 @@
 				BA725DE2251E7B860015604F /* UICollectionView+Extensions.swift */,
 				BAA037F5251F0A7000D154C8 /* UIViewController+Extensions.swift */,
 				BAA03820251F2A9600D154C8 /* String+Extensions.swift */,
+				BAA0384D251F517C00D154C8 /* URL+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -347,7 +350,6 @@
 				A9E9ED81912CF871EBD5737F /* Pods-Marvel HeroesTests.debug.xcconfig */,
 				82CECFC4D1941EDB5A7CEF5D /* Pods-Marvel HeroesTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -608,6 +610,7 @@
 				BAA03801251F0A9800D154C8 /* HeroDetailViewController.swift in Sources */,
 				BAA03828251F2EF500D154C8 /* MarvelDataWrapper.swift in Sources */,
 				BAA03837251F2FD000D154C8 /* Character.swift in Sources */,
+				BAA0384E251F517D00D154C8 /* URL+Extensions.swift in Sources */,
 				BAA0382F251F2F5000D154C8 /* MarvelDataContainer.swift in Sources */,
 				BA1E3EB6251E43010003A0BA /* SceneDelegate.swift in Sources */,
 			);

@@ -17,7 +17,6 @@ class HeroCell: UICollectionViewCell {
     @IBOutlet weak var descriptionStackView: UIStackView!
     
     @IBOutlet weak var heroAliasLabel: UILabel!
-    @IBOutlet weak var heroNameLabel: UILabel!
     @IBOutlet weak var shortDescriptionLabel: UILabel!
     @IBOutlet weak var moreInfoStackView: UIStackView!
     @IBOutlet weak var moreInfoLabel: UILabel!
@@ -25,13 +24,14 @@ class HeroCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        configure(heroAliasLabel, text: "Wolverine", fontSize: 16, isBold: true)
-        configure(heroNameLabel, text: "James Hawwlet")
-        configure(shortDescriptionLabel, text: "Is a fictional Character appering in American comic books published by Marvel", fontSize: 12)
+        configure(heroAliasLabel, fontSize: 16, isBold: true)
+        configure(shortDescriptionLabel, fontSize: 12)
         configure(moreInfoLabel, text: "More info", isBold: true)
         
         containerView.configureCorner(10)
         containerView.configureShadow()
+        
+        configureHeroImageView()
     }
 }
 
@@ -52,8 +52,20 @@ extension HeroCell {
         label.numberOfLines = 0
     }
     
+    private func configureHeroImageView() {
+        self.heroImageView.contentMode = .scaleAspectFit
+        self.heroImageView.configureCorner(10, corners: [.layerMinXMaxYCorner, .layerMinXMinYCorner])
+    }
+    
     func configure(for character: Character) {
         self.heroAliasLabel.text = character.name
         self.shortDescriptionLabel.text = character.description
+        
+        self.heroImageView.kf.indicatorType = .activity
+        
+        guard let imageExtension = character.thumbnail?.imageExtension else { return }
+        
+        let thumbnailImageURL = character.thumbnail?.imageURL?.thumbnailImageURL(.standardLarge, fileExtension: imageExtension)
+        self.heroImageView.kf.setImage(with: thumbnailImageURL)
     }
 }
