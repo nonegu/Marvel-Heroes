@@ -53,7 +53,7 @@ extension HeroesTableViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension HeroesTableViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let heroDetail: HeroDetailViewController = HeroDetailViewController.createWithNib()
+        let heroDetail = HeroDetailViewController.create(character: characters[indexPath.row])
         present(heroDetail, animated: true, completion: nil)
     }
 }
