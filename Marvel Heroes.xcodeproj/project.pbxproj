@@ -33,6 +33,15 @@
 		BA725DE3251E7B860015604F /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA725DE2251E7B860015604F /* UICollectionView+Extensions.swift */; };
 		BA725DE4251E7B860015604F /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA725DE2251E7B860015604F /* UICollectionView+Extensions.swift */; };
 		BA725DE5251E7B860015604F /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA725DE2251E7B860015604F /* UICollectionView+Extensions.swift */; };
+		BAA037F6251F0A7000D154C8 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA037F5251F0A7000D154C8 /* UIViewController+Extensions.swift */; };
+		BAA037F7251F0A7000D154C8 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA037F5251F0A7000D154C8 /* UIViewController+Extensions.swift */; };
+		BAA037F8251F0A7000D154C8 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA037F5251F0A7000D154C8 /* UIViewController+Extensions.swift */; };
+		BAA03801251F0A9800D154C8 /* HeroDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA037FF251F0A9800D154C8 /* HeroDetailViewController.swift */; };
+		BAA03802251F0A9800D154C8 /* HeroDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA037FF251F0A9800D154C8 /* HeroDetailViewController.swift */; };
+		BAA03803251F0A9800D154C8 /* HeroDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA037FF251F0A9800D154C8 /* HeroDetailViewController.swift */; };
+		BAA03804251F0A9800D154C8 /* HeroDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAA03800251F0A9800D154C8 /* HeroDetailViewController.xib */; };
+		BAA03805251F0A9800D154C8 /* HeroDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAA03800251F0A9800D154C8 /* HeroDetailViewController.xib */; };
+		BAA03806251F0A9800D154C8 /* HeroDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAA03800251F0A9800D154C8 /* HeroDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +82,9 @@
 		BA725DD1251E78990015604F /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
 		BA725DDB251E7B4A0015604F /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		BA725DE2251E7B860015604F /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
+		BAA037F5251F0A7000D154C8 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		BAA037FF251F0A9800D154C8 /* HeroDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailViewController.swift; sourceTree = "<group>"; };
+		BAA03800251F0A9800D154C8 /* HeroDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeroDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +222,7 @@
 				BA725DC9251E78770015604F /* UIFont+Extensions.swift */,
 				BA725DDB251E7B4A0015604F /* UIView+Extensions.swift */,
 				BA725DE2251E7B860015604F /* UICollectionView+Extensions.swift */,
+				BAA037F5251F0A7000D154C8 /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -226,8 +239,34 @@
 			isa = PBXGroup;
 			children = (
 				BA725D88251E6D300015604F /* HeroesTableView */,
+				BAA037E5251F067E00D154C8 /* HeroDetailView */,
 			);
 			path = Modules;
+			sourceTree = "<group>";
+		};
+		BAA037E5251F067E00D154C8 /* HeroDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				BAA037E6251F068C00D154C8 /* View */,
+				BAA037E7251F069100D154C8 /* Controller */,
+			);
+			path = HeroDetailView;
+			sourceTree = "<group>";
+		};
+		BAA037E6251F068C00D154C8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BAA037E7251F069100D154C8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BAA037FF251F0A9800D154C8 /* HeroDetailViewController.swift */,
+				BAA03800251F0A9800D154C8 /* HeroDetailViewController.xib */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,6 +374,7 @@
 			files = (
 				BA1E3EC0251E43020003A0BA /* LaunchScreen.storyboard in Resources */,
 				BA1E3EBD251E43020003A0BA /* Assets.xcassets in Resources */,
+				BAA03804251F0A9800D154C8 /* HeroDetailViewController.xib in Resources */,
 				BA725DBD251E74AF0015604F /* HeroCell.xib in Resources */,
 				BA1E3EBB251E43010003A0BA /* Main.storyboard in Resources */,
 			);
@@ -345,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA725DBE251E74AF0015604F /* HeroCell.xib in Resources */,
+				BAA03805251F0A9800D154C8 /* HeroDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,6 +394,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA725DBF251E74AF0015604F /* HeroCell.xib in Resources */,
+				BAA03806251F0A9800D154C8 /* HeroDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,9 +409,11 @@
 				BA725DD2251E78990015604F /* AppFonts.swift in Sources */,
 				BA1E3EB8251E43010003A0BA /* HeroesTableViewController.swift in Sources */,
 				BA1E3EB4251E43010003A0BA /* AppDelegate.swift in Sources */,
+				BAA037F6251F0A7000D154C8 /* UIViewController+Extensions.swift in Sources */,
 				BA725DE3251E7B860015604F /* UICollectionView+Extensions.swift in Sources */,
 				BA725DBA251E74AF0015604F /* HeroCell.swift in Sources */,
 				BA725DCA251E78770015604F /* UIFont+Extensions.swift in Sources */,
+				BAA03801251F0A9800D154C8 /* HeroDetailViewController.swift in Sources */,
 				BA1E3EB6251E43010003A0BA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,8 +425,10 @@
 				BA725DD3251E78990015604F /* AppFonts.swift in Sources */,
 				BA725DBB251E74AF0015604F /* HeroCell.swift in Sources */,
 				BA725DE4251E7B860015604F /* UICollectionView+Extensions.swift in Sources */,
+				BAA037F7251F0A7000D154C8 /* UIViewController+Extensions.swift in Sources */,
 				BA725DDD251E7B4A0015604F /* UIView+Extensions.swift in Sources */,
 				BA725DCB251E78770015604F /* UIFont+Extensions.swift in Sources */,
+				BAA03802251F0A9800D154C8 /* HeroDetailViewController.swift in Sources */,
 				BA1E3ECB251E43030003A0BA /* Marvel_HeroesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,8 +440,10 @@
 				BA725DD4251E78990015604F /* AppFonts.swift in Sources */,
 				BA725DBC251E74AF0015604F /* HeroCell.swift in Sources */,
 				BA725DE5251E7B860015604F /* UICollectionView+Extensions.swift in Sources */,
+				BAA037F8251F0A7000D154C8 /* UIViewController+Extensions.swift in Sources */,
 				BA725DDE251E7B4A0015604F /* UIView+Extensions.swift in Sources */,
 				BA725DCC251E78770015604F /* UIFont+Extensions.swift in Sources */,
+				BAA03803251F0A9800D154C8 /* HeroDetailViewController.swift in Sources */,
 				BA1E3ED6251E43030003A0BA /* Marvel_HeroesUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
