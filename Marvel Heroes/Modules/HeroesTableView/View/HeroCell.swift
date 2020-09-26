@@ -52,4 +52,9 @@ extension HeroCell {
         label.text = text
         label.numberOfLines = 0
     }
+    
+    func configure(for character: Character) {
+        self.heroAliasLabel.text = character.name
+        self.shortDescriptionLabel.text = character.description
+    }
 }

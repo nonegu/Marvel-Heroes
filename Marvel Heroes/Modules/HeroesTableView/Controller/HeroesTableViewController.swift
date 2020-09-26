@@ -11,6 +11,7 @@ class HeroesTableViewController: UIViewController {
     
     // MARK: - Properties
     private var collectionView: UICollectionView!
+    private var characters: [Character] = []
     
     // MARK: - IBOutlets
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -22,17 +23,29 @@ class HeroesTableViewController: UIViewController {
         configureNavBarWithImage()
         configureSegmentedControl()
         configureCollectionView()
+        
+        MarvelAPI.getCharacters(limit: 30, offset: 0) { (result) in
+            switch result {
+            case .success(let chars):
+                self.characters.append(contentsOf: chars)
+                self.collectionView.reloadData()
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
 
 // MARK: - UICollectionViewDelegate
 extension HeroesTableViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return characters.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: HeroCell = collectionView.dequeueReusableCell(indexPath: indexPath)
+        cell.configure(for: characters[indexPath.row])
         return cell
     }
 }
