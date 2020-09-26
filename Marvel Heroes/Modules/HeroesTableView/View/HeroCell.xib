@@ -31,31 +31,25 @@
                                         <rect key="frame" x="145" y="0.0" width="137" height="264"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jma-Fv-i9c" userLabel="aliasLabel">
-                                                <rect key="frame" x="0.0" y="0.0" width="137" height="54.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7NR-HO-tMF" userLabel="shortDescriptionLabel">
-                                                <rect key="frame" x="0.0" y="58.5" width="137" height="147"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="137" height="130"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="nxl-lh-zn4" userLabel="moreInfoStackView">
-                                                <rect key="frame" x="0.0" y="209.5" width="137" height="54.5"/>
+                                                <rect key="frame" x="0.0" y="134" width="137" height="130"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbA-Mk-1qx" userLabel="moreInfoLabel">
-                                                        <rect key="frame" x="0.0" y="0.0" width="115" height="54.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="115" height="130"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oB9-Eq-NEZ" userLabel="imageContainer">
-                                                        <rect key="frame" x="123" y="0.0" width="14" height="54.5"/>
+                                                        <rect key="frame" x="123" y="0.0" width="14" height="130"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jni-p8-YLL">
-                                                                <rect key="frame" x="0.0" y="2" width="12.5" height="51"/>
+                                                                <rect key="frame" x="0.0" y="2" width="12.5" height="126.5"/>
                                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </imageView>
                                                         </subviews>
@@ -105,7 +99,6 @@
                 <outlet property="moreInfoImageView" destination="jni-p8-YLL" id="pL2-hs-Ao2"/>
                 <outlet property="moreInfoLabel" destination="fbA-Mk-1qx" id="KMV-It-B3B"/>
                 <outlet property="moreInfoStackView" destination="nxl-lh-zn4" id="jqh-kd-ukZ"/>
-                <outlet property="shortDescriptionLabel" destination="7NR-HO-tMF" id="Zyv-ea-XqE"/>
             </connections>
             <point key="canvasLocation" x="304.34782608695656" y="159.375"/>
         </collectionViewCell>

@@ -17,7 +17,6 @@ class HeroCell: UICollectionViewCell {
     @IBOutlet weak var descriptionStackView: UIStackView!
     
     @IBOutlet weak var heroAliasLabel: UILabel!
-    @IBOutlet weak var shortDescriptionLabel: UILabel!
     @IBOutlet weak var moreInfoStackView: UIStackView!
     @IBOutlet weak var moreInfoLabel: UILabel!
     @IBOutlet weak var moreInfoImageView: UIImageView!
@@ -25,7 +24,6 @@ class HeroCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         configure(heroAliasLabel, fontSize: 16, isBold: true)
-        configure(shortDescriptionLabel, fontSize: 12)
         configure(moreInfoLabel, text: "More info", isBold: true)
         
         containerView.configureCorner(10)
@@ -59,7 +57,6 @@ extension HeroCell {
     
     func configure(for character: Character) {
         self.heroAliasLabel.text = character.name
-        self.shortDescriptionLabel.text = character.description
         
         self.heroImageView.kf.indicatorType = .activity
         
