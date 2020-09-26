@@ -7,12 +7,20 @@
 
 import UIKit
 
+protocol HeroDetailViewControllerDelegate: class {
+    func heroDetail(_ vc: HeroDetailViewController, didRemoveFavorite char: Character)
+}
+
 class HeroDetailViewController: UIViewController {
     
     // MARK: - Initialization
-    static func create(character: Character) -> HeroDetailViewController {
+    static func create(
+        character: Character,
+        delegate: HeroDetailViewControllerDelegate? = nil
+    ) -> HeroDetailViewController {
         let vc: HeroDetailViewController = HeroDetailViewController.createWithNib()
         vc.character = character
+        vc.delegate = delegate
         return vc
     }
     
@@ -30,6 +38,8 @@ class HeroDetailViewController: UIViewController {
     private var character: Character!
     private var comics: [Comic] = []
     private var isLoading = false
+    
+    private weak var delegate: HeroDetailViewControllerDelegate?
     
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -206,9 +216,12 @@ extension HeroDetailViewController {
     private func removeHeroFromFavorites() {
         guard let object = RealmService.getObjects(ofType: RealmCharacter.self).filter("id == \(character.id ?? 0)").first else { return }
         RealmService.delete(object: object) { [weak self] (result) in
+            guard let `self` = self else { return }
+            
             switch result {
             case .success(_):
-                self?.favoriteButton.isSelected.toggle()
+                self.favoriteButton.isSelected.toggle()
+                self.delegate?.heroDetail(self, didRemoveFavorite: self.character)
             case .failure(let error):
                 print(error)
             }

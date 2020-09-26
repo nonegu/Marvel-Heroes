@@ -83,8 +83,20 @@ extension HeroesTableViewController: UICollectionViewDelegate {
             character = favoriteCharacters[indexPath.row]
         }
         
-        let heroDetail = HeroDetailViewController.create(character: character)
+        let heroDetail = HeroDetailViewController.create(character: character, delegate: self)
         present(heroDetail, animated: true, completion: nil)
+    }
+}
+
+// MARK: - HeroDetailViewControllerDelegate
+extension HeroesTableViewController: HeroDetailViewControllerDelegate {
+    func heroDetail(_ vc: HeroDetailViewController, didRemoveFavorite char: Character) {
+        switch viewState {
+        case .favorites:
+            self.collectionView.reloadData()
+        case .all:
+            break
+        }
     }
 }
 
@@ -103,10 +115,15 @@ extension HeroesTableViewController {
                 let indexPaths = self.createNewIndexPathsFor(chars: chars)
                 
                 DispatchQueue.main.async {
-                    self.collectionView.performBatchUpdates({
+                    switch self.viewState {
+                    case .all:
+                        self.collectionView.performBatchUpdates({
+                            self.characters.append(contentsOf: chars)
+                            self.collectionView.insertItems(at: indexPaths)
+                        }, completion: nil)
+                    case .favorites:
                         self.characters.append(contentsOf: chars)
-                        self.collectionView.insertItems(at: indexPaths)
-                    }, completion: nil)
+                    }
                 }
                 
                 self.paginationControlData.currentPage += 1
@@ -115,6 +132,7 @@ extension HeroesTableViewController {
                     self.paginationControlData.isLastPage = true
                 }
             case .failure(let error):
+                self.isLoading = false
                 print(error)
             }
         }
