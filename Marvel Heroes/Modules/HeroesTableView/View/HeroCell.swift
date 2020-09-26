@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class HeroCell: UICollectionViewCell {
     
@@ -24,8 +25,6 @@ class HeroCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        heroImageView.image = UIImage(named: "marvelNavBarIcon")
         configure(heroAliasLabel, text: "Wolverine", fontSize: 16, isBold: true)
         configure(heroNameLabel, text: "James Hawwlet")
         configure(shortDescriptionLabel, text: "Is a fictional Character appering in American comic books published by Marvel", fontSize: 12)
