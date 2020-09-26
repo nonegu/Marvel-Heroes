@@ -29,4 +29,13 @@ extension UICollectionView {
     ) {
         self.register(UINib(nibName: nibName, bundle: nil), forCellWithReuseIdentifier: identifier)
     }
+    
+    func registerSupplementaryView<View: UIView>(
+        _ viewClass: View.Type,
+        viewKind: String = UICollectionView.elementKindSectionHeader,
+        nibName: String = View.defaultReuseIdentifier,
+        identifier: String = View.defaultReuseIdentifier
+    ) {
+        self.register(UINib(nibName: nibName, bundle: nil), forSupplementaryViewOfKind: viewKind, withReuseIdentifier: identifier)
+    }
 }

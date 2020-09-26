@@ -12,6 +12,9 @@ class HeroesTableViewController: UIViewController {
     // MARK: - Properties
     private var collectionView: UICollectionView!
     private var characters: [Character] = []
+    private var isLoading = false
+    private var loadingView: LoadingReusableView?
+    private var paginationControlData = PaginationControlData(pageSize: 30)
     
     // MARK: - IBOutlets
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -24,16 +27,7 @@ class HeroesTableViewController: UIViewController {
         configureSegmentedControl()
         configureCollectionView()
         
-        MarvelAPI.getCharacters(limit: 30, offset: 0) { (result) in
-            switch result {
-            case .success(let chars):
-                self.characters.append(contentsOf: chars)
-                self.collectionView.reloadData()
-                
-            case .failure(let error):
-                print(error)
-            }
-        }
+        getCharacters(page: paginationControlData.currentPage)
     }
 }
 
@@ -58,7 +52,79 @@ extension HeroesTableViewController: UICollectionViewDelegate {
     }
 }
 
-// MARK: - Helpers
+// MARK: - API Calls
+extension HeroesTableViewController {
+    private func getCharacters(page: Int) {
+        isLoading = true
+        
+        let offset = page * paginationControlData.pageSize
+        let limit = paginationControlData.pageSize
+        MarvelAPI.getCharacters(limit: limit, offset: offset) { (result) in
+            switch result {
+            case .success(let chars):
+                self.isLoading = false
+                
+                let indexPaths = self.createNewIndexPathsFor(chars: chars)
+                
+                DispatchQueue.main.async {
+                    self.collectionView.performBatchUpdates({
+                        self.characters.append(contentsOf: chars)
+                        self.collectionView.insertItems(at: indexPaths)
+                    }, completion: nil)
+                }
+                
+                self.paginationControlData.currentPage += 1
+                
+                if chars.count < self.paginationControlData.pageSize {
+                    self.paginationControlData.isLastPage = true
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+}
+
+// MARK: - UICollectionView FooterView & Infinite Scroll
+extension HeroesTableViewController {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        if self.isLoading {
+            return CGSize.zero
+        } else {
+            return CGSize(width: collectionView.bounds.size.width, height: 55)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionFooter {
+            let aFooterView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: LoadingReusableView.defaultReuseIdentifier, for: indexPath) as! LoadingReusableView
+            loadingView = aFooterView
+            loadingView?.backgroundColor = UIColor.clear
+            return aFooterView
+        }
+        return UICollectionReusableView()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
+        if elementKind == UICollectionView.elementKindSectionFooter {
+            self.loadingView?.activityIndicator.startAnimating()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didEndDisplayingSupplementaryView view: UICollectionReusableView, forElementOfKind elementKind: String, at indexPath: IndexPath) {
+        if elementKind == UICollectionView.elementKindSectionFooter {
+            self.loadingView?.activityIndicator.stopAnimating()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row == characters.count - 5 && !self.isLoading {
+            getCharacters(page: paginationControlData.currentPage + 1)
+        }
+    }
+}
+
+// MARK: - UI Manipulations
 extension HeroesTableViewController {
     private func configureNavBarWithImage() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -95,7 +161,24 @@ extension HeroesTableViewController {
         collectionView.dataSource = self
         
         collectionView.registerCellFromNib(HeroCell.self)
+        collectionView.registerSupplementaryView(LoadingReusableView.self, viewKind: UICollectionView.elementKindSectionFooter)
         collectionView.backgroundColor = .white
+    }
+}
+
+// MARK: - Helpers
+extension HeroesTableViewController {
+    private func createNewIndexPathsFor(chars: [Character]) -> [IndexPath] {
+        var indexPaths: [IndexPath] = []
+        var lastItem = self.characters.isEmpty ? 0 : (self.characters.count)
+        
+        chars.forEach { _ in
+            let indexPath = IndexPath(item: lastItem, section: 0)
+            indexPaths.append(indexPath)
+            lastItem += 1
+        }
+        
+        return indexPaths
     }
     
     private func createLayout() -> UICollectionViewLayout {
@@ -107,6 +190,14 @@ extension HeroesTableViewController {
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = .init(top: 0, leading: 0, bottom: 4, trailing: 0)
+        
+        let footerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                heightDimension: .absolute(55.0))
+        let footer = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: footerSize,
+            elementKind: UICollectionView.elementKindSectionFooter,
+            alignment: .bottom)
+        section.boundarySupplementaryItems = [footer]
         
         return UICollectionViewCompositionalLayout(section: section)
     }
