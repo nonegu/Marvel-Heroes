@@ -39,3 +39,20 @@ extension UICollectionView {
         self.register(UINib(nibName: nibName, bundle: nil), forSupplementaryViewOfKind: viewKind, withReuseIdentifier: identifier)
     }
 }
+
+extension UICollectionViewCell {
+    final func configure(
+        _ label: UILabel,
+        text: String? = nil,
+        fontSize: CGFloat = 14,
+        isBold: Bool = false
+    ) {
+        if isBold {
+            label.font = .helveticaNeueBoldWith(size: fontSize)
+        } else {
+            label.font = .helveticaNeueRegularWith(size: fontSize)
+        }
+        
+        label.text = text
+    }
+}

@@ -24,6 +24,8 @@ class HeroCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         configure(heroAliasLabel, fontSize: 16, isBold: true)
+        heroAliasLabel.numberOfLines = 0
+        
         configure(moreInfoLabel, text: "More info", isBold: true)
         
         containerView.configureCorner(10)
@@ -34,22 +36,6 @@ class HeroCell: UICollectionViewCell {
 }
 
 extension HeroCell {
-    private func configure(
-        _ label: UILabel,
-        text: String? = nil,
-        fontSize: CGFloat = 14,
-        isBold: Bool = false
-    ) {
-        if isBold {
-            label.font = .helveticaNeueBoldWith(size: fontSize)
-        } else {
-            label.font = .helveticaNeueRegularWith(size: fontSize)
-        }
-        
-        label.text = text
-        label.numberOfLines = 0
-    }
-    
     private func configureHeroImageView() {
         self.heroImageView.contentMode = .scaleAspectFit
         self.heroImageView.configureCorner(10, corners: [.layerMinXMaxYCorner, .layerMinXMinYCorner])
