@@ -12,7 +12,7 @@ private enum ViewState: Int {
     case favorites
 }
 
-class HeroesTableViewController: UIViewController {
+class HeroesCollectionViewController: UIViewController {
     
     // MARK: - Properties
     private var collectionView: UICollectionView!
@@ -63,7 +63,7 @@ class HeroesTableViewController: UIViewController {
 }
 
 // MARK: - UICollectionViewDelegate
-extension HeroesTableViewController: UICollectionViewDataSource {
+extension HeroesCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch viewState {
         case .all:
@@ -87,7 +87,7 @@ extension HeroesTableViewController: UICollectionViewDataSource {
 }
 
 // MARK: - UICollectionViewDelegate
-extension HeroesTableViewController: UICollectionViewDelegate {
+extension HeroesCollectionViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let character: Character
         switch viewState {
@@ -103,7 +103,7 @@ extension HeroesTableViewController: UICollectionViewDelegate {
 }
 
 // MARK: - HeroDetailViewControllerDelegate
-extension HeroesTableViewController: HeroDetailViewControllerDelegate {
+extension HeroesCollectionViewController: HeroDetailViewControllerDelegate {
     func heroDetail(_ vc: HeroDetailViewController, didRemoveFavorite char: Character) {
         switch viewState {
         case .favorites:
@@ -116,7 +116,7 @@ extension HeroesTableViewController: HeroDetailViewControllerDelegate {
 }
 
 // MARK: - API Calls
-extension HeroesTableViewController {
+extension HeroesCollectionViewController {
     private func getCharacters(page: Int) {
         isLoading = true
         
@@ -169,7 +169,7 @@ extension HeroesTableViewController {
 }
 
 // MARK: - UICollectionView FooterView & Infinite Scroll
-extension HeroesTableViewController {
+extension HeroesCollectionViewController {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         if self.isLoading {
             return CGSize(width: collectionView.bounds.size.width, height: 55)
@@ -210,7 +210,7 @@ extension HeroesTableViewController {
 }
 
 // MARK: - UI Manipulations
-extension HeroesTableViewController {
+extension HeroesCollectionViewController {
     private func configureNavBarWithImage() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -260,7 +260,7 @@ extension HeroesTableViewController {
 }
 
 // MARK: - Helpers
-extension HeroesTableViewController {
+extension HeroesCollectionViewController {
     private func createNewIndexPathsFor(chars: [Character]) -> [IndexPath] {
         var indexPaths: [IndexPath] = []
         var lastItem = self.characters.isEmpty ? 0 : (self.characters.count)
