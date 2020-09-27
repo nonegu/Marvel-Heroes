@@ -17,7 +17,17 @@ class HeroesTableViewController: UIViewController {
     // MARK: - Properties
     private var collectionView: UICollectionView!
     private var characters: [Character] = []
-    private var isLoading = false
+    
+    private var isLoading = false {
+        didSet {
+            if isLoading {
+                loadingView?.activityIndicator.startAnimating()
+            } else {
+                loadingView?.activityIndicator.stopAnimating()
+            }
+        }
+    }
+    
     private var loadingView: LoadingReusableView?
     private var paginationControlData = PaginationControlData(pageSize: 30)
     private var viewState: ViewState = .all
@@ -138,7 +148,21 @@ extension HeroesTableViewController {
                 }
             case .failure(let error):
                 self.isLoading = false
-                print(error)
+                
+                let errorMessage: String
+                switch error {
+                case let .errorOccured(message):
+                    errorMessage = message
+                default:
+                    errorMessage = error.localizedDescription
+                }
+                
+                self.showAlertWithAction(
+                    vc: self, title: "Sorry!",
+                    message: errorMessage,
+                    buttonTitles: ["OK"],
+                    buttonActions: [nil]
+                )
             }
         }
     }
@@ -148,9 +172,9 @@ extension HeroesTableViewController {
 extension HeroesTableViewController {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         if self.isLoading {
-            return CGSize.zero
-        } else {
             return CGSize(width: collectionView.bounds.size.width, height: 55)
+        } else {
+            return CGSize.zero
         }
     }
     
@@ -166,7 +190,7 @@ extension HeroesTableViewController {
     
     func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
         if elementKind == UICollectionView.elementKindSectionFooter {
-            if viewState != .favorites {
+            if viewState != .favorites && isLoading {
                 self.loadingView?.activityIndicator.startAnimating()
             }
         }

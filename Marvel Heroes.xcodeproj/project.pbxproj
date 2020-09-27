@@ -87,6 +87,9 @@
 		BAECA4F9251FE062000F2534 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAECA4F8251FE062000F2534 /* RealmService.swift */; };
 		BAECA4FA251FE062000F2534 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAECA4F8251FE062000F2534 /* RealmService.swift */; };
 		BAECA4FB251FE062000F2534 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAECA4F8251FE062000F2534 /* RealmService.swift */; };
+		BAFFC62025205A2F00554DBF /* MarvelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFC61F25205A2F00554DBF /* MarvelError.swift */; };
+		BAFFC62125205A2F00554DBF /* MarvelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFC61F25205A2F00554DBF /* MarvelError.swift */; };
+		BAFFC62225205A2F00554DBF /* MarvelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFC61F25205A2F00554DBF /* MarvelError.swift */; };
 		C67158A215DAD08E02453456 /* Pods_Marvel_Heroes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C1819882A905C7ECF1F46D9 /* Pods_Marvel_Heroes.framework */; };
 /* End PBXBuildFile section */
 
@@ -154,6 +157,7 @@
 		BAECA4D3251FABE4000F2534 /* ComicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComicCell.xib; sourceTree = "<group>"; };
 		BAECA4E7251FDFB4000F2534 /* RealmCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCharacter.swift; sourceTree = "<group>"; };
 		BAECA4F8251FE062000F2534 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
+		BAFFC61F25205A2F00554DBF /* MarvelError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelError.swift; sourceTree = "<group>"; };
 		FEAC75FF2CA3A09E1BF3C3D8 /* Pods-Marvel Heroes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marvel Heroes.debug.xcconfig"; path = "Target Support Files/Pods-Marvel Heroes/Pods-Marvel Heroes.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -371,6 +375,7 @@
 			isa = PBXGroup;
 			children = (
 				BAA03814251F25B000D154C8 /* MarvelAPI.swift */,
+				BAFFC61F25205A2F00554DBF /* MarvelError.swift */,
 				BAA03827251F2EF500D154C8 /* MarvelDataWrapper.swift */,
 				BAA0382E251F2F5000D154C8 /* MarvelDataContainer.swift */,
 			);
@@ -661,6 +666,7 @@
 				BA725DD2251E78990015604F /* AppFonts.swift in Sources */,
 				BA1E3EB8251E43010003A0BA /* HeroesTableViewController.swift in Sources */,
 				BAA03821251F2A9600D154C8 /* String+Extensions.swift in Sources */,
+				BAFFC62025205A2F00554DBF /* MarvelError.swift in Sources */,
 				BA1E3EB4251E43010003A0BA /* AppDelegate.swift in Sources */,
 				BAECA4D4251FABE4000F2534 /* ComicCell.swift in Sources */,
 				BAECA4F9251FE062000F2534 /* RealmService.swift in Sources */,
@@ -706,6 +712,7 @@
 				BAA03816251F25B000D154C8 /* MarvelAPI.swift in Sources */,
 				BAA03802251F0A9800D154C8 /* HeroDetailViewController.swift in Sources */,
 				BA1E3ECB251E43030003A0BA /* Marvel_HeroesTests.swift in Sources */,
+				BAFFC62125205A2F00554DBF /* MarvelError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -733,6 +740,7 @@
 				BAA03817251F25B000D154C8 /* MarvelAPI.swift in Sources */,
 				BAA03803251F0A9800D154C8 /* HeroDetailViewController.swift in Sources */,
 				BA1E3ED6251E43030003A0BA /* Marvel_HeroesUITests.swift in Sources */,
+				BAFFC62225205A2F00554DBF /* MarvelError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

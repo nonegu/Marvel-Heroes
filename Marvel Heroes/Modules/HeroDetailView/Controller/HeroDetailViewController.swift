@@ -103,7 +103,22 @@ extension HeroDetailViewController {
                     self.collectionView.reloadData()
                 }
             case .failure(let error):
-                print(error)
+                self.isLoading = false
+                
+                let errorMessage: String
+                switch error {
+                case let .errorOccured(message):
+                    errorMessage = message
+                default:
+                    errorMessage = error.localizedDescription
+                }
+                
+                self.showAlertWithAction(
+                    vc: self, title: "Sorry!",
+                    message: errorMessage,
+                    buttonTitles: ["OK"],
+                    buttonActions: [nil]
+                )
             }
         }
     }
@@ -223,7 +238,12 @@ extension HeroDetailViewController {
                 self.favoriteButton.isSelected.toggle()
                 self.delegate?.heroDetail(self, didRemoveFavorite: self.character)
             case .failure(let error):
-                print(error)
+                self.showAlertWithAction(
+                    vc: self, title: "Sorry!",
+                    message: error.localizedDescription,
+                    buttonTitles: ["OK"],
+                    buttonActions: [nil]
+                )
             }
         }
     }
@@ -231,11 +251,18 @@ extension HeroDetailViewController {
     private func addHeroToFavorites() {
         let hero = RealmCharacter(from: character)
         RealmService.save(objects: hero) { [weak self] (result) in
+            guard let `self` = self else { return }
+            
             switch result {
             case .success(_):
-                self?.favoriteButton.isSelected.toggle()
+                self.favoriteButton.isSelected.toggle()
             case .failure(let error):
-                print(error)
+                self.showAlertWithAction(
+                    vc: self, title: "Sorry!",
+                    message: error.localizedDescription,
+                    buttonTitles: ["OK"],
+                    buttonActions: [nil]
+                )
             }
         }
     }

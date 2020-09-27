@@ -73,9 +73,16 @@ class MarvelAPI {
                     completion(.success(responseObject))
                 }
             } catch {
-                DispatchQueue.main.async {
-                    completion(.failure(.dataProcessError))
-                    return
+                do {
+                    let marvelError = try decoder.decode(MarvelError.self, from: data)
+                    DispatchQueue.main.async {
+                        completion(.failure(.errorOccured(msg: marvelError.message ?? "")))
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        completion(.failure(.dataProcessError))
+                        return
+                    }
                 }
             }
         }
